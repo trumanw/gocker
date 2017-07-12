@@ -7,6 +7,9 @@ RUN apk update && apk add go && \
     apk add --update alpine-sdk && \
   rm -rf /var/cache/apk/* && mkdir /gopath && mkdir /gopath/bin
 
+# apk install the dependencies of compiling the protobuf source code
+RUN apk add --update gcc g++ musl-dev make pkgconfig libtool autoconf automake libuuid file curl
+
 ENV GOROOT=/usr/lib/go \
     GOPATH=/gopath \
     GOBIN=/gopath/bin
